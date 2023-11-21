@@ -19,7 +19,7 @@ import { Observable } from 'rxjs';
   //ngx
 import { CollapseModule } from 'ngx-bootstrap/collapse'
 import { ModalModule } from 'ngx-bootstrap/modal'
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead'
+//import { TypeaheadModule } from 'ngx-bootstrap/typeahead'
 import { TooltipModule } from 'ngx-bootstrap/tooltip'
 //import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
@@ -45,7 +45,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover'
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
     TooltipModule.forRoot(),
-    TypeaheadModule.forRoot(),
+   // TypeaheadModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
