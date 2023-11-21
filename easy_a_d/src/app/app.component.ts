@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirebaseService } from './services/firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'easy_a_d';
+constructor(public firebaseService: FirebaseService){
+
+}
+
+  test() {
+this.firebaseService.consoleTest();
+  }
 }

@@ -1,0 +1,22 @@
+.sideNavHeader {
+    border-bottom: 1px solid;
+    border-color: lightgray;
+}
+
+ .sideNavListItem {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    color: blue;
+    font-size: 15px;
+    cursor: default;
+ }
+
+ p:hover {
+    text-decoration: underline;
+ }
+
+ .title {
+    text-align: center;
+ }

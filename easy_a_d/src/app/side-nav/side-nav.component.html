@@ -1,0 +1,424 @@
+<div style="height: 90.5vh" class="mt-1">
+  <div
+    *ngIf="role !== 'No Role Found' && role"
+    style="text-align: left; font-size: 13px"
+  >
+    <div class="col" style="text-align: center">
+      <!-- <span *ngIf="!startupService.impersonated_username">{{
+        startupService.loggedInUser
+      }}</span> -->
+
+      <!-- <span *ngIf="startupService.impersonated_username">
+        <i class="fa fa-user-secret" aria-hidden="true" style="color: red"></i>
+
+        {{ startupService.impersonated_username }}</span
+      > -->
+
+      logged in as: {{ role }}
+    </div>
+  </div>
+
+  <h4>
+    <!-- <span style="width: 100%" class="badge bg-primary"
+      >{{ startupService.facility }}
+      <span *ngIf="startupService.facility">-</span> Version
+      {{ currentVersion }}
+    </span> -->
+  </h4>
+
+  <!-- GIF, App Name-->
+
+  <div
+    class="row"
+    style="text-align: center; display: flex; width: 50%; flex-wrap: nowrap"
+  >
+    <!-- <img
+      src="{{ planners_gif_path }}"
+      style="display: inline-block; margin-left: 40px; max-width: 50%"
+    /> -->
+
+    <h3 style="display: inline-block; text-align: center;">
+      <span class="title">Easy_A&D </span> <i class="fa-solid fa-book"></i>
+    </h3>
+  </div>
+
+  <!-- *ngIf="startupService.is_admin || startupService.is_user || startupService.is_viewer" -->
+
+  <div class="sideNavHeader">
+    <!-- Admin -->
+    <!-- *ngIf="startupService.is_admin" -->
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="admin_is_collapsed = !admin_is_collapsed"
+      [attr.aria-expanded]="!admin_is_collapsed"
+      aria-controls="collapseBasic"
+      style="width: 100%"
+    >
+      Admin
+    </button>
+
+    <div id="collapseBasic" [collapse]="admin_is_collapsed" [isAnimated]="true">
+      <div class="well well-lg card card-block card-header">
+        <!-- <div class="sideNavListItem"><p (click)="applyView('SECURITY')">Security</p></div> -->
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('PROJECT_LIST')">Project List</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('TEMPLATE')">Template</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('TEMPLATE_AT_WS')">Template@WS</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('ACTIVITIES')">Activities</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('GOLDEN_SCHEDULE')">Golden Schedule</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('ACTIVITY_OWNER')">Activity Owner</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('REASON_LIST')">Reason List</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('CALENDAR')">Calendar</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('PLAN_DATES_OVERWRITE')">
+            Plan Dates Overwrite
+          </p>
+        </div>
+
+        <!-- <div class="sideNavListItem"><p (click)="applyView('APP_USAGE_STATISTICS')">App Usage Statistics</p></div> -->
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('CONFIG')">Config</p>
+        </div>
+
+        <!-- Dynamic links based on wp_ and name of the button section-->
+
+        <div class="sideNavListItem">
+          <span
+            style="margin-left: 12px"
+            (click)="
+              goToExternalLink('startupService.sys_config_groups.wp_[i].value')
+            "
+          >
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acquisitions -->
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="reporting_is_collapsed = !reporting_is_collapsed"
+      [attr.aria-expanded]="!reporting_is_collapsed"
+      [disabled]="
+        role !== 'Admin' &&
+        role !== 'Developer' &&
+        role !== 'Viewer' &&
+        role !== 'User'
+      "
+      aria-controls="collapseBasic"
+      style="width: 100%; margin-top: 20px"
+    >
+      <i class="fa-solid fa-plus"></i> Acquisitions
+    </button>
+
+    <div
+      id="collapseBasic"
+      [collapse]="reporting_is_collapsed"
+      [isAnimated]="true"
+    >
+      <div class="well well-lg card card-block card-header">
+        <!-- <div class="sideNavListItem"><p (click)="applyView('REPORTING_DASHBOARD')">Dashboard</p></div> -->
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('REPORTING_DETAILS')">Details</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('REPORTING_HISTORY')">History</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('GOLDEN_SCHEDULE')">Golden Schedule</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('REPORTING_SANDBOX')">Sandbox</p>
+        </div>
+
+        <!-- Dynamic links based on wp_ and name of the button section-->
+
+        <div class="sideNavListItem">
+          <span
+            style="margin-left: 12px"
+            (click)="
+              goToExternalLink('startupService.sys_config_groups.wp_[i].value')
+            "
+          >
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <!-- <div class="sideNavListItem"> <p (click)="applyView('REPORTING_TOOL_MOVE_DATES')"> Tool Move Dates  </p> </div> -->
+      </div>
+    </div>
+
+    <!-- Dispositions -->
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="
+        tool_move_schedule_is_collapsed = !tool_move_schedule_is_collapsed
+      "
+      [disabled]="
+        role !== 'Admin' &&
+        role !== 'Developer' &&
+        role !== 'Viewer' &&
+        role !== 'User'
+      "
+      [attr.aria-expanded]="!tool_move_schedule_is_collapsed"
+      aria-controls="collapseBasic"
+      style="width: 100%; margin-top: 20px"
+    >
+      <i class="fa-solid fa-minus"></i> Dispositions
+    </button>
+
+    <div
+      id="collapseBasic"
+      [collapse]="tool_move_schedule_is_collapsed"
+      [isAnimated]="true"
+    >
+      <div class="well well-lg card card-block card-header">
+        <div class="sideNavListItem">
+          <p (click)="applyView('TOOL_MOVE_SCHEDULE_DETAILS')">Details</p>
+        </div>
+
+        <div class="sideNavListItem">
+          <p (click)="applyView('TOOL_MOVE_SCHEDULE_HISTORY')">History</p>
+        </div>
+
+        <!-- Dynamic links based on wp_ and name of the button section-->
+
+        <div class="sideNavListItem">
+          <span
+            style="margin-left: 12px"
+            (click)="
+              goToExternalLink('startupService.sys_config_groups.wp_[i].value')
+            "
+          >
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Help -->
+
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="help_is_collapsed = !help_is_collapsed"
+      click=""
+      [disabled]="
+        role !== 'Admin' &&
+        role !== 'Developer' &&
+        role !== 'Viewer' &&
+        role !== 'User'
+      "
+      [attr.aria-expanded]="!help_is_collapsed"
+      aria-controls="collapseBasic"
+      style="width: 100%; margin-top: 20px"
+    >
+      Help
+    </button>
+
+    <div id="collapseBasic" [collapse]="help_is_collapsed" [isAnimated]="true">
+      <div
+        class="well well-lg card card-block card-header"
+        style="z-index: 2; background-color: whitesmoke"
+      >
+        <!--Second Level -->
+
+        <!--Developer Help Files-->
+
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="applyView('TROUBLESHOOT_TOOL')"
+          aria-controls="collapseBasic"
+          style="width: 100%; margin-top: 20px"
+        >
+          <i class="fa-solid fa-screwdriver-wrench"></i> Troubleshoot Tool
+        </button>
+
+        <!--User Help Files-->
+
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="user_help_file_is_collapsed = !user_help_file_is_collapsed"
+          [attr.aria-expanded]="!user_help_file_is_collapsed"
+          aria-controls="collapseBasic"
+          style="width: 100%; margin-top: 20px"
+        >
+          User Help Files
+        </button>
+
+        <div
+          id="collapseBasic"
+          [collapse]="user_help_file_is_collapsed"
+          [isAnimated]="true"
+        >
+          <div class="sideNavListItem">
+            <span
+              style="margin-left: 12px"
+              (click)="
+                goToExternalLink(
+                  'startupService.sys_config_groups.help_user_[i].value'
+                )
+              "
+            >
+              <i class="fa fa-external-link" aria-hidden="true"></i>
+            </span>
+          </div>
+
+          <div style="text-align: center">No Help File Available</div>
+        </div>
+
+        <!--Admin Help Files-->
+
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="admin_help_file_is_collapsed = !admin_help_file_is_collapsed"
+          [attr.aria-expanded]="!admin_help_file_is_collapsed"
+          aria-controls="collapseBasic"
+          style="width: 100%; margin-top: 20px"
+        >
+          Admin Help Files
+        </button>
+
+        <div
+          id="collapseBasic"
+          [collapse]="admin_help_file_is_collapsed"
+          [isAnimated]="true"
+        >
+          <div class="sideNavListItem">
+            <p
+              (click)="
+                goToExternalLink(
+                  'startupService.sys_config_groups.help_admin_[i].value'
+                )
+              "
+            >
+              <i class="fa fa-external-link" aria-hidden="true"></i>
+            </p>
+          </div>
+
+          <div style="text-align: center">No Help File Available</div>
+        </div>
+
+        <!--Developer Help Files-->
+
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="
+            developer_help_file_is_collapsed = !developer_help_file_is_collapsed
+          "
+          [attr.aria-expanded]="!developer_help_file_is_collapsed"
+          aria-controls="collapseBasic"
+          style="width: 100%; margin-top: 20px"
+        >
+          Developer Help Files
+        </button>
+
+        <div
+          id="collapseBasic"
+          [collapse]="developer_help_file_is_collapsed"
+          [isAnimated]="true"
+        >
+          <div class="sideNavListItem">
+            <p
+              (click)="
+                goToExternalLink(
+                  'startupService.sys_config_groups.help_dev_[i].value'
+                )
+              "
+            >
+              <i class="fa fa-external-link" aria-hidden="true"></i>
+            </p>
+          </div>
+
+          <div style="text-align: center">No Help File Available</div>
+        </div>
+
+        <!--Issues / Enhancements-->
+
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          style="width: 100%; margin-top: 20px"
+          (click)="goToExternalLink('issue_enhancement_url')"
+        >
+          Issues/Enhancements
+        </button>
+      </div>
+    </div>
+
+    <!-- Impersonate -->
+
+    <!-- <div class="laptop_view">
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm"
+        (click)="openImpersonateModal()"
+        style="
+          width: 100%;
+          margin-top: 20px;
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+        "
+      >
+        <i class="fa fa-user-secret" aria-hidden="true"></i> Impersonate
+      </button>
+    </div> -->
+
+    <!-- Remove Impersonation -->
+
+    <!-- <div class="laptop_view">
+      <button
+        type="button"
+        class="btn btn-outline-danger btn-sm laptop_view"
+        (click)="removeImpersonation()"
+        style="
+          width: 100%;
+          margin-top: 20px;
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+        "
+      >
+        Remove Impersonation
+      </button>
+    </div> -->
+  </div>
+</div>
